@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/MinhHieu212/Printer-Simulation/static/css/main.1064d5bd.css",
-    "main.js": "/MinhHieu212/Printer-Simulation/static/js/main.9863dfbf.js",
-    "index.html": "/MinhHieu212/Printer-Simulation/index.html",
-    "main.1064d5bd.css.map": "/MinhHieu212/Printer-Simulation/static/css/main.1064d5bd.css.map",
-    "main.9863dfbf.js.map": "/MinhHieu212/Printer-Simulation/static/js/main.9863dfbf.js.map"
+    "main.css": "/Printer-Simulation/static/css/main.1064d5bd.css",
+    "main.js": "/Printer-Simulation/static/js/main.9863dfbf.js",
+    "index.html": "/Printer-Simulation/index.html",
+    "main.1064d5bd.css.map": "/Printer-Simulation/static/css/main.1064d5bd.css.map",
+    "main.9863dfbf.js.map": "/Printer-Simulation/static/js/main.9863dfbf.js.map"
   },
   "entrypoints": [
     "static/css/main.1064d5bd.css",
