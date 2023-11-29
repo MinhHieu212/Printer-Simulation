@@ -2,27 +2,32 @@ import React, { useState } from "react";
 import CenterModal from "./CenterModal";
 import { nextPrinterButton } from "./PrinterAPI";
 
-const ConfirmPrintingModal = ({ children, printer }) => {
+const ConfirmPrintingModal = ({ children, printer, setRefetch = () => {} }) => {
   const [openModal, setOpenModal] = useState(false);
-  // const printingJob = printer.printingJob;
   const printingQueue = printer.printingQueue;
+  const printingJob = printer.printingJob;
+  const [isBlock, setIsBlock] = useState(false);
 
   const handleClose = () => {
     setOpenModal(false);
   };
 
-  const data = {
-    CurrentName: "HelloWorld.c++",
-    CurrentStatus: "Đang in",
-    Queue: ["dstt.pptx", "cnpm.pdf"],
-  };
-
   const handleNextAction = async () => {
-    const response = await nextPrinterButton({ printerId: printer?.printerId });
-    console.log(
-      "---------------------------RESPONSE---------------------",
-      response
-    );
+    setIsBlock(true);
+    try {
+      const response = await nextPrinterButton({
+        printerId: printer?.printerId,
+      });
+      console.log(
+        "---------------------------RESPONSE of NEXT API---------------------",
+        response
+      );
+    } catch (errors) {
+      console.log(errors);
+    }
+
+    setRefetch();
+    setIsBlock(false);
   };
 
   return (
@@ -37,14 +42,14 @@ const ConfirmPrintingModal = ({ children, printer }) => {
           <div className="mx-auto gap-y-2 flex flex-col px-3 py-5 font-bold">
             <div className="flex gap-2 px-2  items-start">
               <span className="text-[blue] font-bold w-[30%]">FileName</span>
-              <div className="border border-black w-[70%] shadow-lg rounded-md p-2">
-                <p>{data?.CurrentName}</p>
+              <div className="border border-black w-[70%]  h-[50px] shadow-lg rounded-md p-2 overflow-hidden">
+                {printingJob[0]?.document?.title || "..."}
               </div>
             </div>
             <div className="flex gap-2 px-2 items-start">
               <span className="text-[blue] font-bold w-[30%]">Status</span>
-              <div className="border border-black w-[70%] shadow-lg rounded-md p-2">
-                <p>{data?.CurrentStatus}</p>
+              <div className="border border-black w-[70%] shadow-lg h-[50px] rounded-md p-2  overflow-clip">
+                <p>{printingJob[0]?.status || "..."}</p>
               </div>
             </div>
             <div className="flex gap-2 px-2 items-start">
@@ -58,8 +63,11 @@ const ConfirmPrintingModal = ({ children, printer }) => {
           </div>
           <div className="flex items-center gap-3 justify-center w-full py-4">
             <button
-              className="bg-[#e0e0e0] shadow-lg p-2 w-[90%] block rounded-lg border border-black text-[16px] md:text-[18px] text-[blue] font-semibold "
+              className={`bg-[#e0e0e0] shadow-lg p-2 w-[90%] block rounded-lg border border-black text-[16px] md:text-[18px] text-[blue] font-semibold ${
+                isBlock ? "bg-[#a0a0a0]" : ""
+              }`}
               onClick={handleNextAction}
+              disabled={isBlock}
             >
               Next
             </button>

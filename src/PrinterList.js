@@ -5,14 +5,14 @@ import { getPrinterList } from "./PrinterAPI";
 
 const PrinterList = () => {
   const [printerList, setPrinterList] = useState([]);
-
+  const [refetch, setRefetch] = useState(false);
   useEffect(() => {
     const callAPI = async () => {
       const response = await getPrinterList();
       setPrinterList(response.data);
     };
     callAPI();
-  }, []);
+  }, [refetch]);
 
   return (
     <div className="Printing w-full px-[10px] max-w-[1280px] bg-[white] shadow-sm  lg:px-[20px] mx-auto pb-10 min-h-[93vh]">
@@ -33,7 +33,11 @@ const PrinterList = () => {
       </div>
       <hr className="sm-hr mt-4" />
       {printerList.map((printer, index) => (
-        <PrinterListItem printer={printer}></PrinterListItem>
+        <PrinterListItem
+          key={index}
+          printer={printer}
+          setRefetch={() => setRefetch(!refetch)}
+        ></PrinterListItem>
       ))}
     </div>
   );

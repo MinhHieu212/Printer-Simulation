@@ -2,9 +2,9 @@ import React from "react";
 import { PrinterIcon } from "./Icons";
 import ConfirmPrintingModal from "./PrinterModal";
 
-function PrinterListItem({ printer }) {
+function PrinterListItem({ printer, setRefetch = () => {} }) {
   return (
-    <ConfirmPrintingModal printer={printer}>
+    <ConfirmPrintingModal printer={printer} setRefetch={setRefetch}>
       <div className="PrintingItem mt-3">
         <div className="bg-[#ffffff] hover:bg-[#eeeeee] transition-all cursor-pointer flex rounded-md justify-evenly w-[100] shadow-md">
           <div className="w-[30%] my-3 mx-1 md:m-3 shadow-md bg-white py-2 px-1 rounded-lg text-center item flex flex-col justify-center items-center border-2 border-[#1488db] ">
