@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Printer-Simulation/static/css/main.12a20e0a.css",
-    "main.js": "/Printer-Simulation/static/js/main.1560c50a.js",
+    "main.js": "/Printer-Simulation/static/js/main.c4b8f2a7.js",
     "index.html": "/Printer-Simulation/index.html",
     "main.12a20e0a.css.map": "/Printer-Simulation/static/css/main.12a20e0a.css.map",
-    "main.1560c50a.js.map": "/Printer-Simulation/static/js/main.1560c50a.js.map"
+    "main.c4b8f2a7.js.map": "/Printer-Simulation/static/js/main.c4b8f2a7.js.map"
   },
   "entrypoints": [
     "static/css/main.12a20e0a.css",
-    "static/js/main.1560c50a.js"
+    "static/js/main.c4b8f2a7.js"
   ]
 }
