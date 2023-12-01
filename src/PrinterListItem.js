@@ -43,7 +43,7 @@ function PrinterListItem({ printer, setRefetch = () => {} }) {
             <p className="text-[16px] lg:text-[18px] text-[#1488db] text-center font-semibold">
               Hàng đợi:
               <span className="text-black pl-2 block md:inline text-center">
-                {printer?.waiting_amount} yêu cầu
+                {printer?.printingQueue?.length} yêu cầu
               </span>
             </p>
           </div>
